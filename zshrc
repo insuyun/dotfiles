@@ -114,3 +114,6 @@ alias rake='noglob rake'
 alias ag='apt-get'
 alias v='vim'
 alias vi='vim'
+
+# TERM environment setting
+export TERM='screen-256color'
