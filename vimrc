@@ -377,7 +377,7 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
 
 " Tab
-map <C-T> :tabnew<CR>
+" map <C-T> :tabnew<CR>
 if has('win32')
   map <C-Tab> :tabnext<CR>
   map <C-S-Tab> :tabprevious<CR>
@@ -544,3 +544,5 @@ if has('mac') || has('macunix')
         \ }
   nmap <Leader>d <Plug>DashSearch
 endif
+
+set tags+=/home/wuninsu/klee/install/klee/tags
