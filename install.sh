@@ -73,7 +73,9 @@ case "$1" in
       'tmux.conf' \
       'vimrc' \
       'zprofile' \
-      'zshrc'
+      'zshrc' \
+      'gdbinit'\
+      'gdbinit.local'
     do
       replace_file $FILENAME
     done
