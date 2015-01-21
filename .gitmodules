@@ -7,3 +7,6 @@
 [submodule "solarized"]
 	path = solarized
 	url = https://github.com/altercation/solarized.git
+[submodule "Gdbinit"]
+	path = Gdbinit
+	url = https://github.com/gdbinit/Gdbinit.git
