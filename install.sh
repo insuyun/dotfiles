@@ -74,11 +74,13 @@ case "$1" in
       'vimrc' \
       'zprofile' \
       'zshrc' \
-      'gdbinit'\
       'gdbinit.local'
     do
       replace_file $FILENAME
     done
+
+    replace_file "gdbinit", ".gdbinit"
+
     for FILENAME in bin/*
     do
       replace_file $FILENAME $FILENAME
