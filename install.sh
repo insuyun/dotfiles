@@ -79,7 +79,7 @@ case "$1" in
       replace_file $FILENAME
     done
 
-    replace_file "gdbinit", ".gdbinit"
+    replace_file "gdbinit" ".gdbinit"
 
     for FILENAME in bin/*
     do
