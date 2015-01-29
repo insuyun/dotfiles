@@ -1,6 +1,6 @@
 # dotfiles
 
-[@yous](https://github.com/yous)' dotfiles.
+[@jakkdu](https://github.com/jakkdu)' dotfiles.
 
 - [Requirements](#requirements)
 - [Install](#install)
@@ -22,7 +22,7 @@
 Clone this repository:
 
 ``` sh
-git clone https://github.com/yous/dotfiles.git
+git clone https://github.com/jakkdu/dotfiles.git
 cd dotfiles
 ```
 
