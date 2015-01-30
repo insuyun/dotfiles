@@ -1,1 +1,8 @@
+# Decimal input-radix
 set input-radix 0xa
+
+# Limit output height32
+set height 32
+
+# Showing stack
+set $SHOWSTACK = 1
