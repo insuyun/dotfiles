@@ -45,7 +45,7 @@ Plug 'scrooloose/syntastic'
 Plug 'a.vim'
 " Automated tag file generation and syntax highlighting of tags
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-easytags'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Enable repeating supported plugin maps with "."
@@ -544,3 +544,5 @@ if has('mac') || has('macunix')
         \ }
   nmap <Leader>d <Plug>DashSearch
 endif
+
+set tags=./tags;/,tags;/
