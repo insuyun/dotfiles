@@ -110,6 +110,9 @@ Plug 'tpope/vim-rails'
 " ANSI escape
 Plug 'AnsiEsc.vim', { 'for': 'railslog' }
 
+" file line
+Plug 'bogado/file-line'
+
 " Mac OS
 if has('mac') || has('macunix')
   " Launch queries for Dash.app from inside Vim
