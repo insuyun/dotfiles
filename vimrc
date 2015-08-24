@@ -45,7 +45,7 @@ Plug 'scrooloose/syntastic'
 Plug 'a.vim'
 " Automated tag file generation and syntax highlighting of tags
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-easytags'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 " Enable repeating supported plugin maps with "."
@@ -275,13 +275,13 @@ if has('gui_running')
 endif
 
 " Highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace //
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-if version >= 702
-  autocmd BufWinLeave * call clearmatches()
-endif
+"highlight ExtraWhitespace ctermbg=red guibg=red
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace //
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"if version >= 702
+"  autocmd BufWinLeave * call clearmatches()
+"endif
 
 " Text formatting
 set autoindent
@@ -290,7 +290,7 @@ set smartindent
 set softtabstop=2
 set shiftwidth=2
 set tabstop=2
-autocmd FileType c,cpp,java,mkd,markdown,python
+autocmd FileType java,mkd,markdown,python
       \ setlocal softtabstop=4 shiftwidth=4 tabstop=4
 " Disable automatic comment insertion
 autocmd FileType *
@@ -544,3 +544,5 @@ if has('mac') || has('macunix')
         \ }
   nmap <Leader>d <Plug>DashSearch
 endif
+
+set tags=./tags;/,tags;/
