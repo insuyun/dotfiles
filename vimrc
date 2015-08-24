@@ -487,11 +487,11 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 " NERD Tree and Tag List
-let s:open_sidebar = 1
-if &diff
-  let s:open_sidebar = 0
-endif
-let Tlist_Inc_Winwidth = 0
+"let s:open_sidebar = 1
+"if &diff
+"  let s:open_sidebar = 0
+"endif
+"let Tlist_Inc_Winwidth = 0
 
 function! OpenSidebar()
   NERDTree
@@ -504,10 +504,10 @@ function! OpenSidebar()
   wincmd p
 endfunction
 
-autocmd VimEnter *
-      \ if (s:open_sidebar) |
-      \   call OpenSidebar() |
-      \ endif
+"autocmd VimEnter *
+"      \ if (s:open_sidebar) |
+"      \   call OpenSidebar() |
+"      \ endif
 
 " ConqueTerm
 let g:ConqueTerm_InsertOnEnter = 1
@@ -544,5 +544,3 @@ if has('mac') || has('macunix')
         \ }
   nmap <Leader>d <Plug>DashSearch
 endif
-
-set tags+=/home/wuninsu/klee/install/klee/tags
