@@ -544,5 +544,5 @@ if has('mac') || has('macunix')
         \ }
   nmap <Leader>d <Plug>DashSearch
 endif
-
+vnoremap // y/<C-R>"<CR>
 set tags=./tags;/,tags;/
