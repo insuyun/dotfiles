@@ -550,4 +550,5 @@ endif
 
 set tags=./tags;/,tags;/
 
-autocmd FileType c,cpp,python,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+" Remove white space 
+autocmd FileType tex,bib,c,cpp,python,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
