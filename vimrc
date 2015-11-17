@@ -299,6 +299,10 @@ autocmd FileType java,mkd,markdown,python
 autocmd FileType *
       \ setlocal formatoptions-=c formatoptions-=o
 
+" Use tab for c (Linux convention)
+autocmd FileType c
+      \ setlocal noexpandtab
+
 " Mappings
 noremap j gj
 noremap k gk
