@@ -110,6 +110,9 @@ Plug 'tpope/vim-rails'
 " ANSI escape
 Plug 'AnsiEsc.vim', { 'for': 'railslog' }
 
+" file line
+Plug 'bogado/file-line'
+
 " Mac OS
 if has('mac') || has('macunix')
   " Launch queries for Dash.app from inside Vim
@@ -546,3 +549,6 @@ if has('mac') || has('macunix')
 endif
 vnoremap // y/<C-R>"<CR>
 set tags=./tags;/,tags;/
+
+" Remove white space 
+autocmd FileType tex,bib,c,cpp,python,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e

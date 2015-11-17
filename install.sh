@@ -74,7 +74,8 @@ case "$1" in
       'vimrc' \
       'zprofile' \
       'zshrc' \
-      'gdbinit.local'
+      'gdbinit.local'\
+      'bash_profile'
     do
       replace_file $FILENAME
     done
