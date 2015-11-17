@@ -7,8 +7,6 @@
 	pager = less -F -R -X
 [color]
 	ui = auto
-[commit]
-	gpgsign = true
 [difftool]
 	prompt = false
 [fetch]

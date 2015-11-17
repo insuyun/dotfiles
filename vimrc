@@ -299,6 +299,10 @@ autocmd FileType java,mkd,markdown,python
 autocmd FileType *
       \ setlocal formatoptions-=c formatoptions-=o
 
+" Use tab for c (Linux convention)
+autocmd FileType c
+      \ setlocal noexpandtab
+
 " Mappings
 noremap j gj
 noremap k gk
@@ -547,7 +551,8 @@ if has('mac') || has('macunix')
         \ }
   nmap <Leader>d <Plug>DashSearch
 endif
-
+vnoremap // y/<C-R>"<CR>
 set tags=./tags;/,tags;/
 
-autocmd FileType c,cpp,python,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+" Remove white space 
+autocmd FileType tex,bib,c,cpp,python,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
