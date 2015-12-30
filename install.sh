@@ -80,7 +80,9 @@ case "$1" in
       replace_file $FILENAME
     done
 
-    replace_file "Gdbinit/gdbinit" ".gdbinit"
+    # setup peda gdb
+    echo "source $DIR/peda/peda.py " > ~/.gdbinit   
+    echo "source ~/.gdbinit.local" >> ~/.gdbinit
 
     for FILENAME in bin/*
     do
