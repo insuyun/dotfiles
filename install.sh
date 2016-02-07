@@ -74,6 +74,7 @@ case "$1" in
       'vimrc' \
       'zprofile' \
       'zshrc' \
+      'bashrc' \
       'gdbinit.local'\
       'bash_profile'
     do
