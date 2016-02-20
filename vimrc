@@ -303,6 +303,9 @@ autocmd FileType *
 autocmd FileType c
       \ setlocal noexpandtab
 
+autocmd FileType plaintex
+      \ setlocal tw=79
+
 " Mappings
 noremap j gj
 noremap k gk
