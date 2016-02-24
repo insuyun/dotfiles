@@ -40,7 +40,7 @@ Plug 'tpope/vim-unimpaired'
 " Vim sugar for the UNIX shell commands
 Plug 'tpope/vim-eunuch'
 " Syntax checking plugin
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 " Switch between source files and header files
 Plug 'a.vim'
 " Automated tag file generation and syntax highlighting of tags
