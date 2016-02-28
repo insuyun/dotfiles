@@ -40,7 +40,7 @@ Plug 'tpope/vim-unimpaired'
 " Vim sugar for the UNIX shell commands
 Plug 'tpope/vim-eunuch'
 " Syntax checking plugin
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 " Switch between source files and header files
 Plug 'a.vim'
 " Automated tag file generation and syntax highlighting of tags
@@ -300,8 +300,8 @@ autocmd FileType *
       \ setlocal formatoptions-=c formatoptions-=o
 
 " Use tab for c (Linux convention)
-autocmd FileType c
-      \ setlocal noexpandtab
+" autocmd FileType c
+"      \ setlocal noexpandtab
 
 autocmd FileType plaintex,mkd,markdown
       \ setlocal tw=79
