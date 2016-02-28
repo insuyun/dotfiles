@@ -303,7 +303,7 @@ autocmd FileType *
 autocmd FileType c
       \ setlocal noexpandtab
 
-autocmd FileType plaintex
+autocmd FileType plaintex,mkd,markdown
       \ setlocal tw=79
 
 " Mappings
