@@ -92,7 +92,7 @@ fi
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 # Load the theme.
-antigen theme yous/zsh-themes lime
+antigen bundle yous/lime
 # Tell antigen that you're done.
 antigen apply
 
