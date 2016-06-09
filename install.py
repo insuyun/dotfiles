@@ -9,6 +9,10 @@ def exec_cmds(*cmds):
     for cmd in cmds:
         os.system(cmd)
 
+def mkdir(dn):
+    if not os.path.exists(dn):
+        os.makedirs(dn)
+
 def init_submodules():
     exec_cmds("git submodule init",
                 "git submodule update")
@@ -35,8 +39,13 @@ def replace_file(src, dest = None):
         os.rename(dest, old)
     os.symlink(src, dest)
 
+def create_bin_dir():
+    bin_d = os.path.join(os.environ['HOME'], 'bin')
+    mkdir(bin_d)
+
 def handle_link():
     init_submodules()
+    create_bin_dir()
     files = ['antigen',
                 'gemrc',
                 'gitconfig',
