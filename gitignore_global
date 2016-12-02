@@ -30,3 +30,6 @@ Session.vim
 # peda
 peda-session*.txt
 .gdb_history
+
+# ctags
+tags
