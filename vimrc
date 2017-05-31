@@ -20,7 +20,7 @@ endif
 
 " General
 " Preserve missing EOL at the end of text files
-Plug 'PreserveNoEOL'
+Plug 'vim-scripts/PreserveNoEOL'
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 " Full path finder
@@ -30,7 +30,7 @@ Plug 'justinmk/vim-gtfo'
 " Much simpler way to use some motions
 Plug 'Lokaltog/vim-easymotion'
 " Extended % matching
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 " Autocomplete if end
 Plug 'tpope/vim-endwise'
 " Easily delete, change and add surroundings in pairs
@@ -42,7 +42,7 @@ Plug 'tpope/vim-eunuch'
 " Syntax checking plugin
 " Plug 'scrooloose/syntastic'
 " Switch between source files and header files
-Plug 'a.vim'
+Plug 'vim-scripts/a.vim'
 " Automated tag file generation and syntax highlighting of tags
 Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
@@ -59,7 +59,7 @@ Plug 'bling/vim-airline'
 " Explore filesystem
 Plug 'scrooloose/nerdtree'
 " Source code browser
-Plug 'taglist.vim'
+Plug 'vim-scripts/taglist.vim'
 " Show a git diff in the gutter and stages/reverts hunks
 Plug 'airblade/vim-gitgutter'
 
@@ -92,7 +92,7 @@ Plug 'othree/html5.vim'
 Plug 'godlygeek/tabular', { 'for': 'mkd' }
 Plug 'plasticboy/vim-markdown', { 'for': 'mkd' }
 " PHP
-Plug 'php.vim-html-enhanced'
+Plug 'vim-scripts/php.vim-html-enhanced'
 " Racket
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 " TomDoc
@@ -108,7 +108,7 @@ Plug 'ngmy/vim-rubocop', { 'on': 'RuboCop' }
 " Rails
 Plug 'tpope/vim-rails'
 " ANSI escape
-Plug 'AnsiEsc.vim', { 'for': 'railslog' }
+Plug 'vim-scripts/AnsiEsc.vim', { 'for': 'railslog' }
 
 " file line
 Plug 'bogado/file-line'
