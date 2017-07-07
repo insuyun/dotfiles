@@ -15,6 +15,8 @@ Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 " General
 " Preserve missing EOL at the end of text files
 Plug 'vim-scripts/PreserveNoEOL'
+" EditorConfig
+Plug 'editorconfig/editorconfig-vim'
 " Full path finder
 Plug 'ctrlpvim/ctrlp.vim'
 " Go to Terminal or File manager
