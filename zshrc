@@ -114,3 +114,7 @@ alias rake='noglob rake'
 alias ag='apt-get'
 alias v='vim'
 alias vi='vim'
+
+# change *ward-char -> *ward-word
+bindkey '\C-b' backward-word
+bindkey '\C-f' forward-word
