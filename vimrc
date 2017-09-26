@@ -10,27 +10,21 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Colorscheme
-if has('gui_running')
-  Plug 'wombat256.vim'
-else
-  " Plug 'altercation/vim-colors-solarized'
-  Plug 'yous/tomorrow-theme', { 'branch': 'revert-git-summary-bold',
-        \ 'rtp': 'vim' }
-endif
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 
 " General
 " Preserve missing EOL at the end of text files
-Plug 'PreserveNoEOL'
+Plug 'vim-scripts/PreserveNoEOL'
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 " Full path finder
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Go to Terminal or File manager
 Plug 'justinmk/vim-gtfo'
 " Much simpler way to use some motions
 Plug 'Lokaltog/vim-easymotion'
 " Extended % matching
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 " Autocomplete if end
 Plug 'tpope/vim-endwise'
 " Easily delete, change and add surroundings in pairs
@@ -42,7 +36,7 @@ Plug 'tpope/vim-eunuch'
 " Syntax checking plugin
 " Plug 'scrooloose/syntastic'
 " Switch between source files and header files
-Plug 'a.vim'
+Plug 'vim-scripts/a.vim'
 " Automated tag file generation and syntax highlighting of tags
 Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-easytags'
@@ -56,10 +50,6 @@ Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 " Vim UI
 " Status, tabline
 Plug 'bling/vim-airline'
-" Explore filesystem
-Plug 'scrooloose/nerdtree'
-" Source code browser
-Plug 'taglist.vim'
 " Show a git diff in the gutter and stages/reverts hunks
 Plug 'airblade/vim-gitgutter'
 
@@ -92,7 +82,7 @@ Plug 'othree/html5.vim'
 Plug 'godlygeek/tabular', { 'for': 'mkd' }
 Plug 'plasticboy/vim-markdown', { 'for': 'mkd' }
 " PHP
-Plug 'php.vim-html-enhanced'
+Plug 'vim-scripts/php.vim-html-enhanced'
 " Racket
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 " TomDoc
@@ -110,7 +100,7 @@ Plug 'ngmy/vim-rubocop', { 'on': 'RuboCop' }
 " Rails
 Plug 'tpope/vim-rails'
 " ANSI escape
-Plug 'AnsiEsc.vim', { 'for': 'railslog' }
+Plug 'vim-scripts/AnsiEsc.vim', { 'for': 'railslog' }
 
 " file line
 Plug 'bogado/file-line'
@@ -187,8 +177,9 @@ set title
 
 if has('gui_running')
   colorscheme wombat256mod
+elseif has('win32unix')
+  colorscheme darkblue
 else
-  " colorscheme solarized
   colorscheme Tomorrow-Night
 endif
 
@@ -281,31 +272,25 @@ if has('gui_running')
         \ endif
 endif
 
-" Highlight trailing whitespace
-"highlight ExtraWhitespace ctermbg=red guibg=red
-"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-"autocmd InsertEnter * match ExtraWhitespace //
-"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-"if version >= 702
-"  autocmd BufWinLeave * call clearmatches()
-"endif
-
 " Text formatting
 set autoindent
 set expandtab
 set smartindent
+
 set softtabstop=2
 set shiftwidth=2
 set tabstop=2
+
+if has('win32unix')
+  " For MSR
+  au FileType c,cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4
+endif
+
 autocmd FileType java,mkd,markdown,python
       \ setlocal softtabstop=4 shiftwidth=4 tabstop=4
 " Disable automatic comment insertion
 autocmd FileType *
       \ setlocal formatoptions-=c formatoptions-=o
-
-" Use tab for c (Linux convention)
-" autocmd FileType c
-"      \ setlocal noexpandtab
 
 autocmd FileType plaintex,mkd,markdown
       \ setlocal tw=79
@@ -337,29 +322,6 @@ function SetQuickfixMapping()
   nnoremap <buffer> q :ccl<CR>
 endfunction
 autocmd FileType qf call SetQuickfixMapping()
-
-" Auto quit Vim when actual files are closed
-function! CheckLeftBuffers()
-  if tabpagenr('$') == 1
-    let i = 1
-    while i <= winnr('$')
-      if getbufvar(winbufnr(i), '&buftype') == 'help' ||
-            \ getbufvar(winbufnr(i), '&buftype') == 'quickfix' ||
-            \ exists('t:NERDTreeBufName') &&
-            \   bufname(winbufnr(i)) == t:NERDTreeBufName ||
-            \ bufname(winbufnr(i)) == '__Tag_List__'
-        let i += 1
-      else
-        break
-      endif
-    endwhile
-    if i == winnr('$') + 1
-      qall
-    endif
-    unlet i
-  endif
-endfunction
-autocmd BufEnter * call CheckLeftBuffers()
 
 " Search regex
 nnoremap / /\v
@@ -504,29 +466,6 @@ nnoremap <Leader>G :Goyo<CR>
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-" NERD Tree and Tag List
-"let s:open_sidebar = 1
-"if &diff
-"  let s:open_sidebar = 0
-"endif
-"let Tlist_Inc_Winwidth = 0
-
-function! OpenSidebar()
-  NERDTree
-  TlistOpen
-  wincmd J
-  wincmd W
-  wincmd L
-  NERDTreeFocus
-  normal AA
-  wincmd p
-endfunction
-
-"autocmd VimEnter *
-"      \ if (s:open_sidebar) |
-"      \   call OpenSidebar() |
-"      \ endif
-
 " ConqueTerm
 let g:ConqueTerm_InsertOnEnter = 1
 let g:ConqueTerm_CWInsert = 1
@@ -565,8 +504,8 @@ if has('mac') || has('macunix')
         \ }
   nmap <Leader>d <Plug>DashSearch
 endif
-vnoremap // y/<C-R>"<CR>
-set tags=./tags;/,tags;/
 
-" Remove white space 
-autocmd FileType tex,bib,c,cpp,python,java,php autocmd BufWritePre <buffer> :%s/\s\+$//e
+vnoremap // y/<C-R>"<CR>
+
+" Try to find tags recursively
+set tags=tags;
