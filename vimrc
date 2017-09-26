@@ -99,6 +99,8 @@ Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 Plug 'wellbredgrapefruit/tomdoc.vim'
 " XML
 Plug 'othree/xml.vim', { 'for': 'xml' }
+" Tex
+Plug 'lervag/vimtex'
 
 " Ruby
 " Rake
@@ -112,6 +114,8 @@ Plug 'AnsiEsc.vim', { 'for': 'railslog' }
 
 " file line
 Plug 'bogado/file-line'
+
+Plug 'petRUShka/vim-sage'
 
 " Mac OS
 if has('mac') || has('macunix')
@@ -415,6 +419,10 @@ elseif has('unix')
   imap <F6> <ESC>:!./%<<CR>
 endif
 
+" tex compile
+autocmd FileType tex map <F5> :w<CR>:make<CR>
+autocmd FileType tex imap <F5> <ESC>:w<CR>:make<CR>
+
 " Python execute
 autocmd FileType python map <F5> :w<CR>:!python %<CR>
 autocmd FileType python imap <F5> <ESC>:w<CR>:!python %<CR>
@@ -534,6 +542,9 @@ let g:adblock_filter_auto_checksum = 1
 
 " Markdown Vim Mode
 let g:vim_markdown_folding_disabled = 1
+
+" Tex
+let g:vimtex_compiler_latexmk = {'callback' : 0}
 
 " Rake
 nmap <Leader>ra :Rake<CR>
