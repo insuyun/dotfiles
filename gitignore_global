@@ -33,3 +33,12 @@ peda-session*.txt
 
 # ctags
 tags
+
+pin.log
+pintool.log
+
+# pytest
+.cache/
+
+*.log
+*.i64
