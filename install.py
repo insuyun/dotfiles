@@ -23,11 +23,14 @@ def init_submodules():
     for cmd in cmds:
         os.system(cmd)
 
+def install_inkscape():
+    if sys.platform == "darwin":
+        replace_file("inkscape", "bin/inkscape") 
+
 def replace_file(src, dest=None):
     # make as full path
     dest = os.path.join(os.environ['HOME'], dest)
     src = os.path.join(ROOT, src)
-
     if os.path.islink(dest):
         os.unlink(dest)
     elif os.path.exists(dest):
@@ -59,9 +62,8 @@ def handle_link():
         replace_file(fn, ".%s" % fn)
 
     install_peda()
+    install_inkscape()
 
-    for fn in glob.glob("%s/*" % BIN_DIR):
-        replace_file(fn, fn)
     print('Done.')
 
 def usage():

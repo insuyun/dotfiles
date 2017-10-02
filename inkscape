@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+import os
+import subprocess
+import sys
+
+# only run on Mac OS
+assert(sys.platform == "darwin")
+
+argv = ["/Applications/Inkscape.app/Contents/Resources/script"]
+pwd = os.path.realpath(os.getcwd())
+
+# add current working directory after -f or -A
+fix_argument = False
+for arg in sys.argv[1:]:
+    if fix_argument:
+        argv.append(os.path.join(pwd, arg))
+    else:
+        argv.append(os.path.join(arg))
+
+    if arg in ["-f", "-A"]:
+        fix_argument = True
+    else:
+        fix_argument = False
+
+subprocess.call(argv)
