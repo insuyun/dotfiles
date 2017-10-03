@@ -23,9 +23,13 @@ def init_submodules():
     for cmd in cmds:
         os.system(cmd)
 
-def install_inkscape():
+def install_bin():
+    # install inkscape for Mac OSX
     if sys.platform == "darwin":
         replace_file("inkscape", "bin/inkscape") 
+
+    # install make-loop
+    replace_file("make-loop", "bin/make-loop")
 
 def replace_file(src, dest=None):
     # make as full path
@@ -62,7 +66,7 @@ def handle_link():
         replace_file(fn, ".%s" % fn)
 
     install_peda()
-    install_inkscape()
+    install_bin()
 
     print('Done.')
 
