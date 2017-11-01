@@ -1,40 +1,14 @@
 #!/usr/bin/env python3
-import os
-import sys
 import glob
-
-ROOT = os.path.abspath(os.path.dirname(__file__))
-BIN_DIR = os.path.join(os.environ['HOME'], 'bin')
-
-def install_peda():
-    # setup peda gdb
-    os.system('echo "source $DIR/peda/peda.py " > ~/.gdbinit')
-
-def mkdir(dn):
-    if not os.path.exists(dn):
-        os.makedirs(dn)
-
-def init_submodules():
-    cmds = (
-            "git submodule init",
-            "git submodule update"
-            )
-
-    for cmd in cmds:
-        os.system(cmd)
-
-def install_bin():
-    # install inkscape for Mac OSX
-    if sys.platform == "darwin":
-        replace_file("inkscape", "bin/inkscape") 
-
-    # install make-loop
-    replace_file("make-loop", "bin/make-loop")
+import os
+import platform
+import subprocess
+import sys
 
 def replace_file(src, dest=None):
     # make as full path
     dest = os.path.join(os.environ['HOME'], dest)
-    src = os.path.join(ROOT, src)
+    src = os.path.join(os.path.abspath(os.path.dirname(__file__)), src)
     if os.path.islink(dest):
         os.unlink(dest)
     elif os.path.exists(dest):
@@ -42,9 +16,23 @@ def replace_file(src, dest=None):
         os.rename(dest, old)
     os.symlink(src, dest)
 
-def handle_link():
-    init_submodules()
-    mkdir(BIN_DIR)
+def install():
+    # Install submodule
+    for cmd in ["git submodule init", "git submodule update"]:
+        subprocess.check_call(cmd, shell=True)
+    
+    pkgs = [
+        "zsh",
+        "mosh"
+    ]
+    
+    # Install packages
+    if platform.system() == 'Linux':
+        subprocess.check_call(
+                "sudo apt-get install -y %s" % ' '.join(pkgs),
+                shell=True)
+
+    # Install configuration files
     files = [
             'antigen',
             'gemrc',
@@ -65,25 +53,18 @@ def handle_link():
     for fn in files:
         replace_file(fn, ".%s" % fn)
 
-    install_peda()
-    install_bin()
+    # Install peda
+    os.system('echo "source %s/peda/peda.py " > ~/.gdbinit' 
+            % os.path.abspath(os.path.dirname(__file__)))
 
-    print('Done.')
+    # Install user bin
+    user_bin = os.path.join(os.environ['HOME'], 'bin')
+    if not os.path.exists(user_bin):
+        os.makedirs(user_bin)
 
-def usage():
-    print("usage : %s <command>\n"
-            "\n"
-            "Available commands\n"
-            "\tlink\t\tInstall symbolic links\n" % sys.argv[0])
-    sys.exit(-1)
-
-def main():
-    if sys.argv[1] == "link":
-        handle_link()
-    else:
-        usage()
+    # Install inkscape for Mac OSX
+    if platform.system() == "Darwin":
+        replace_file("inkscape", "bin/inkscape") 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        usage()
-    main()
+    install()
