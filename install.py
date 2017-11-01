@@ -26,11 +26,14 @@ def install():
         "mosh"
     ]
     
-    # Install packages
+    # Set up for Linux
     if platform.system() == 'Linux':
         subprocess.check_call(
                 "sudo apt-get install -y %s" % ' '.join(pkgs),
                 shell=True)
+
+        # Install zsh
+        subprocess.check_call("chsh -s $(which zsh)", shell=True)
 
     # Install configuration files
     files = [
