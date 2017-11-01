@@ -23,7 +23,8 @@ def install():
     
     pkgs = [
         "zsh",
-        "mosh"
+        "mosh",
+        "autojump",
     ]
     
     # Set up for Linux
