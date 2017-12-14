@@ -16,6 +16,16 @@ def replace_file(src, dest=None):
         os.rename(dest, old)
     os.symlink(src, dest)
 
+def install_pyenv():
+    if platform.system() == "Linux":
+        pyenv_root = os.path.expanduser("~/.pyenv")
+        if not os.path.exists(pyenv_root):
+            os.system("git clone https://github.com/pyenv/pyenv.git ~/.pyenv")
+
+        virtualenv_root = os.path.join(pyenv_root, "plugins/pyenv-virtualenv")
+        if not os.path.exists(virtualenv_root):
+            os.system("git clone https://github.com/pyenv/pyenv-virtualenv.git %s" % virtualenv_root)
+
 def install():
     # Install submodule
     for cmd in ["git submodule init", "git submodule update"]:
@@ -69,6 +79,9 @@ def install():
     # Install inkscape for Mac OSX
     if platform.system() == "Darwin":
         replace_file("inkscape", "bin/inkscape") 
+
+    install_pyenv()
+
 
 if __name__ == '__main__':
     install()

@@ -155,3 +155,12 @@ alias gstp='git stash pop'
 # change *ward-char -> *ward-word
 bindkey '\C-b' backward-word
 bindkey '\C-f' forward-word
+
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
