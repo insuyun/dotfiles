@@ -107,6 +107,9 @@ Plug 'bogado/file-line'
 
 Plug 'petRUShka/vim-sage'
 
+" Trailing spaces
+Plug 'ntpeters/vim-better-whitespace'
+
 " Mac OS
 if has('mac') || has('macunix')
   " Launch queries for Dash.app from inside Vim
@@ -280,11 +283,6 @@ set smartindent
 set softtabstop=2
 set shiftwidth=2
 set tabstop=2
-
-if has('win32unix')
-  " For MSR
-  au FileType c,cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4
-endif
 
 autocmd FileType java,mkd,markdown,python
       \ setlocal softtabstop=4 shiftwidth=4 tabstop=4
