@@ -46,6 +46,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 " Distraction-free writing in Vim
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+" Ingo library
+Plug 'inkarkat/vim-ingo-library'
+" Spell checker
+Plug 'inkarkat/vim-spellcheck'
 
 " Vim UI
 " Status, tabline
@@ -292,6 +296,10 @@ autocmd FileType *
 
 autocmd FileType plaintex,mkd,markdown
       \ setlocal tw=79
+
+" Enable spell check for tex
+autocmd FileType tex
+      \ SpellCheck
 
 " Mappings
 noremap j gj
