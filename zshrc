@@ -85,6 +85,8 @@ antigen bundle git
 antigen bundle npm
 # RVM aliases and completion.
 antigen bundle rvm
+# ssh-agent
+antigen bundle ssh-agent
 # tmux aliases and configurations.
 if which tmux &> /dev/null; then
   antigen bundle tmux
