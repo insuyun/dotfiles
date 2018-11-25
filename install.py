@@ -30,13 +30,13 @@ def install():
     # Install submodule
     for cmd in ["git submodule init", "git submodule update"]:
         subprocess.check_call(cmd, shell=True)
-    
+
     pkgs = [
         "zsh",
         "mosh",
         "autojump",
     ]
-    
+
     # Set up for Linux
     if platform.system() == 'Linux':
         subprocess.check_call(
@@ -67,8 +67,11 @@ def install():
     for fn in files:
         replace_file(fn, ".%s" % fn)
 
+    # setup ssh config
+    replace_file('sshconfig', '.ssh/config')
+
     # Install peda
-    os.system('echo "source %s/peda/peda.py " > ~/.gdbinit' 
+    os.system('echo "source %s/peda/peda.py " > ~/.gdbinit'
             % os.path.abspath(os.path.dirname(__file__)))
 
     # Install user bin
@@ -78,7 +81,7 @@ def install():
 
     # Install inkscape for Mac OSX
     if platform.system() == "Darwin":
-        replace_file("inkscape", "bin/inkscape") 
+        replace_file("inkscape", "bin/inkscape")
 
     install_pyenv()
 
