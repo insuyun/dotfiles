@@ -5,6 +5,8 @@ import platform
 import subprocess
 import sys
 
+ROOT = os.path.realpath(os.path.dirname(__file__))
+
 def replace_file(src, dest=None):
     # make as full path
     dest = os.path.join(os.environ['HOME'], dest)
@@ -68,6 +70,7 @@ def install():
         replace_file(fn, ".%s" % fn)
 
     # setup ssh config
+    os.chmod(os.path.join(ROOT, 'sshconfig'), 0o600)
     replace_file('sshconfig', '.ssh/config')
 
     # Install peda
