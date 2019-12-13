@@ -13,8 +13,3 @@
 	prune = true
 [push]
   default = simple
-[sendemail]
-  smtpEncryption = tls
-  smtpServer = smtp.gmail.com
-  smtpUser = wuninsu@gmail.com
-  smtpServerPort = 587
