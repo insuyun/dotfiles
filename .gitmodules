@@ -1,12 +1,12 @@
 [submodule "tomorrow-theme"]
-	path = tomorrow-theme
+	path = 3rd/tomorrow-theme
 	url = https://github.com/chriskempson/tomorrow-theme.git
 [submodule "antigen"]
-	path = antigen
+	path = 3rd/antigen
 	url = https://github.com/zsh-users/antigen.git
 [submodule "solarized"]
-	path = solarized
+	path = 3rd/solarized
 	url = https://github.com/altercation/solarized.git
 [submodule "peda"]
-	path = peda
+	path = 3rd/peda
 	url = https://github.com/longld/peda.git

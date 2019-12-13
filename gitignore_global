@@ -29,16 +29,3 @@ Session.vim
 
 # peda
 peda-session*.txt
-.gdb_history
-
-# ctags
-tags
-
-pin.log
-pintool.log
-
-# pytest
-.cache/
-
-*.log
-*.i64

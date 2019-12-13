@@ -112,45 +112,9 @@ function add_to_path_once() {
   fi
 }
 
-function bundle_install() {
-  local bundler_version bundler_1_4_0
-  bundler_version=($(bundle version))
-  [ -z "${bundler_version}" ] && return
-  bundler_version=(${bundler_version[2]//./ })
-  bundler_1_4_0=(1 4 0)
-
-  local jobs_available=1
-  for i in {0..2}; do
-    if [ ${bundler_version[$i]} -gt ${bundler_1_4_0[$i]} ]; then
-      break
-    fi
-    if [ ${bundler_version[$i]} -lt ${bundler_1_4_0[$i]} ]; then
-      jobs_available=0
-      break
-    fi
-  done
-  if [ $jobs_available -eq 1 ]; then
-    if [[ "$(uname)" == 'Darwin' ]]; then
-      local cores_num="$(sysctl -n hw.ncpu)"
-    else
-      local cores_num="$(nproc)"
-    fi
-    bundle install --jobs=$cores_num $@
-  else
-    bundle install $@
-  fi
-}
-
 # Add /usr/local/bin to PATH for Mac OS X
 if [[ "$(uname)" == 'Darwin' ]]; then
   add_to_path_once "/usr/local/bin:/usr/local/sbin"
-fi
-
-# Load Linuxbrew
-if [[ -d "$HOME/.linuxbrew" ]]; then
-  add_to_path_once "$HOME/.linuxbrew/bin"
-  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 fi
 
 # Set PATH to include user's bin if it exists
@@ -171,35 +135,6 @@ elif [ -f "$HOME/.autojump/etc/profile.d/autojump.sh" ]; then
   source "$HOME/.autojump/etc/profile.d/autojump.sh"
 fi
 
-# Load fzf
-if [ -f ~/.fzf.bash ]; then
-  source ~/.fzf.bash
-
-  # fshow - git commit browser
-  fshow() {
-    git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(green)%cr%C(reset)" "$@" |
-    fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-        (grep -o '[a-f0-9]\{7\}' | head -1 |
-        xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-        {}
-FZF-EOF"
-  }
-fi
-
-# Load chruby
-if [ -e /usr/local/share/chruby/chruby.sh ]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-fi
-
-# Load rbenv
-if [ -e "$HOME/.rbenv" ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
 # Load pyenv
 if which pyenv &> /dev/null; then
   eval "$(pyenv init -)"
@@ -212,40 +147,11 @@ elif [ -e "$HOME/.pyenv" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-# Load RVM into a shell session *as a function*
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  source "$HOME/.rvm/scripts/rvm"
-
-  if [[ "$(type rvm | head -n 1)" == "rvm is a shell function" ]]; then
-    # Add RVM to PATH for scripting
-    PATH=$PATH:$HOME/.rvm/bin
-    export rvmsudo_secure_path=1
-
-    # Use right RVM gemset when using tmux
-    if [[ "$TMUX" != "" ]]; then
-      rvm use default
-      cd ..;cd -
-    fi
-  fi
-fi
-
-# Set GOPATH for Go
-if which go &> /dev/null; then
-  [ -d "$HOME/.go" ] || mkdir "$HOME/.go"
-  export GOPATH="$HOME/.go"
-  export PATH="$PATH:$GOPATH/bin"
-fi
-
 # Check if reboot is required for Ubuntu
 if [ -f /usr/lib/update-notifier/update-motd-reboot-required ]; then
   function reboot-required() {
     /usr/lib/update-notifier/update-motd-reboot-required
   }
-fi
-
-# Enable keychain
-if which keychain &> /dev/null; then
-  eval `keychain --eval --quiet --agents ssh id_rsa`
 fi
 
 # Unset local functions
@@ -267,15 +173,6 @@ alias la='ls -lAh'
 alias l='ls -lah'
 alias md='mkdir -p'
 alias rd='rmdir'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-
-# Bundler
-alias be='bundle exec'
-alias bi='bundle_install'
-alias bu='bundle update'
 
 # Git
 alias g='git'
@@ -315,8 +212,6 @@ alias gstp='git stash pop'
 # Vim
 alias v='vim'
 alias vi='vim'
-
-alias ruby-server='ruby -run -ehttpd . -p8000'
 
 # Source local bashrc
 if [ -f "$HOME/.bashrc.local" ]; then
