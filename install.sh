@@ -1,12 +1,19 @@
 #!/bin/bash
 
-# Install packages
-PKGS=(zsh autojump gdb)
-sudo apt update
+if [[ "$(uname)" = 'Linux' ]]; then
+  pkgs=(zsh autojump gdb)
+  sudo apt update
 
-for pkg in "${PKGS[@]}"
-do
-  sudo apt install $pkg
-done
+  for pkg in "${pkgs[@]}"
+  do
+    sudo apt install $pkg
+  done
 
-# TODO: Support Mac OS
+  chsh -s $(which zsh)
+
+elif [[ "$(uname)" = 'Darwin' ]]; then
+
+  echo "TODO: Support Mac OS"
+
+fi
+
