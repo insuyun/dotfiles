@@ -43,6 +43,8 @@ do
   replace_file config/$config ~/.$config
 done
 
+replace_file 3rd/antigen ~/.antigen
+
 # Install peda
 append_if_not_exist "source $DIR/peda/peda.py" ~/.gdbinit
 
