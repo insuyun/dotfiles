@@ -1,13 +1,8 @@
 #!/bin/bash
 
 if [[ "$(uname)" = 'Linux' ]]; then
-  pkgs=(zsh autojump gdb)
   sudo apt update
-
-  for pkg in "${pkgs[@]}"
-  do
-    sudo apt install $pkg
-  done
+  sudo apt install -y zsh autojump gdb
 
   chsh -s $(which zsh)
 
