@@ -114,6 +114,9 @@ Plug 'petRUShka/vim-sage'
 " Trailing spaces
 Plug 'ntpeters/vim-better-whitespace'
 
+" Tamarin prover
+Plug 'tamarin-prover/editors'
+
 " Mac OS
 if has('mac') || has('macunix')
   " Launch queries for Dash.app from inside Vim
@@ -515,3 +518,6 @@ vnoremap // y/<C-R>"<CR>
 
 " Try to find tags recursively
 set tags=tags;
+
+set visualbell
+set t_vb=
