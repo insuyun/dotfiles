@@ -106,6 +106,9 @@ Plug 'tpope/vim-rails'
 " ANSI escape
 Plug 'vim-scripts/AnsiEsc.vim', { 'for': 'railslog' }
 
+" tamarine-prover
+Plug 'tamarin-prover/editors'
+
 " file line
 Plug 'bogado/file-line'
 
