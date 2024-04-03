@@ -29,3 +29,15 @@ Session.vim
 
 # peda
 peda-session*.txt
+
+# gdb_history
+.gdb_history
+
+# Zone.Identifier
+*:Zone.Identifier
+
+# virtualenv
+.venv
+
+# vscode
+*.code-workspace
