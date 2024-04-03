@@ -172,3 +172,6 @@ export ZSH_CACHE_DIR=$HOME/.zsh
 # rubygems
 export GEM_HOME="$HOME/.gem"
 export PATH=$PATH:$GEM_HOME/bin
+
+# python binarires
+export PATH=$PATH:$HOME/.local/bin
