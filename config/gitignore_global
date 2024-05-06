@@ -41,3 +41,8 @@ peda-session*.txt
 
 # vscode
 *.code-workspace
+.vscode
+
+# Ignore PowerPoint temporary files
+~$*.pptx
+~$*.ppt
