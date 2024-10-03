@@ -65,3 +65,13 @@ if [ "$(uname)" = 'Linux' ]; then
     git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
   fi
 fi
+
+
+# Install rust + ropr
+if ! command -v rustc &> /dev/null
+then
+  curl https://sh.rustup.rs -sSf | sh -s -- -y
+fi
+export PATH=$PATH:$HOME/.cargo/bin
+cargo install ropr
+
