@@ -50,6 +50,13 @@ pushd 3rd/pwndbg
 ./setup.sh
 popd
 
+# Install angelheap
+pwndbg=$DIR/3rd/pwndbg
+pushd 3rd/Pwngdb/pwndbg
+cp angelheap.py $pwndbg/pwndbg/angelheap.py
+cp commands/angelheap.py $pwndbg/pwndbg/commands/angelheap.py
+sed -i -e '/config_mod.init_params()/a import pwndbg.commands.angelheap' $pwndbg/pwndbg/__init__.py
+popd
 
 # Install bin
 mkdir -p ~/bin

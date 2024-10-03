@@ -10,3 +10,6 @@
 [submodule "3rd/pwndbg"]
 	path = 3rd/pwndbg
 	url = https://github.com/pwndbg/pwndbg.git
+[submodule "3rd/Pwngdb"]
+	path = 3rd/Pwngdb
+	url = https://github.com/scwuaptx/Pwngdb.git
