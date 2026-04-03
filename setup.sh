@@ -58,6 +58,13 @@ cp commands/angelheap.py $pwndbg/pwndbg/commands/angelheap.py
 sed -i -e '/config_mod.init_params()/a import pwndbg.commands.angelheap' $pwndbg/pwndbg/__init__.py
 popd
 
+# Install claude configs
+mkdir -p ~/.claude
+replace_file config/claude/settings.json ~/.claude/settings.json
+if [[ -d "$DIR/config/claude/commands" ]]; then
+  replace_file config/claude/commands ~/.claude/commands
+fi
+
 # Install bin
 mkdir -p ~/bin
 
